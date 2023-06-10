@@ -75,6 +75,7 @@ export default function Home() {
             <p>Cargando...</p>
           ) : (
             <>
+            <div>
               <h2>Pistas de audio:</h2>
               {audioTracks.map((track, index) => (
                 <div key={index}>
@@ -82,7 +83,9 @@ export default function Home() {
                   <textarea id={`audio-${index}`} rows="4" cols="50" placeholder="Agregar texto aquí"></textarea>
                 </div>
               ))}
+            </div>  
 
+              <div>
               <h2>Pistas MIDI:</h2>
               {midiTracks.map((track, index) => (
                 <div key={index}>
@@ -90,6 +93,7 @@ export default function Home() {
                   <textarea id={`midi-${index}`} rows="4" cols="50" placeholder="Agregar texto aquí"></textarea>
                 </div>
               ))}
+              </div>
             </>
           )}
         </div>
