@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const FileUploader = ({handleSubmit}) => {
+const FileUploader = ({ handleSubmit }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedFileName, setSelectedFileName] = useState("");
 
@@ -20,7 +20,12 @@ const FileUploader = ({handleSubmit}) => {
           <p>{selectedFileName}</p>
           <button onClick={removeFile}>Eliminar archivo seleccionado</button>
           <br />
-          <button onClick={handleSubmit} type="submit">
+          <button
+            onClick={() => {
+              handleSubmit(selectedFile);
+            }}
+            type="submit"
+          >
             Subir
           </button>
         </div>

@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import FileUploader from "./FileUploader";
-import Loader from "./Loader";
+//import { useHistory } from "react-router-dom";
+import FileUploader from "../components/FileUploader";
+import Loader from "../components/Loader"
+import Proyecto from "./Proyecto";
 
 export default function Home() {
-  const history = useHistory();
+  //const history = useHistory();
   const [loading, setLoading] = useState(false);
   const [audioTracks, setAudioTracks] = useState([]);
   const [midiTracks, setMidiTracks] = useState([]);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (selectedFile) => {
+    console.log('selected file', selectedFile);
     if (!selectedFile) return;
     setLoading(true);
     try {
       await fetchData();
-      setLoading(false);
+      setLoading(false);     
     } catch (error) {
       console.error(error);
     }
@@ -22,25 +24,19 @@ export default function Home() {
 
   const fetchData = async () => {
     try {
-      const audioResponse = await fetch("http://localhost:3000/audio-tracks");
+      const audioResponse = await fetch("http://localhost:3001/audio-tracks");
       const audioData = await audioResponse.json();
       setAudioTracks(audioData);
 
-      const midiResponse = await fetch("http://localhost:3000/midi-tracks");
+      const midiResponse = await fetch("http://localhost:3001/midi-tracks");
       const midiData = await midiResponse.json();
       setMidiTracks(midiData);
-
-      setLoading(false);
     } catch (error) {
       console.error(error);
     }
   };
 
-  useEffect(() => {
-    if (!loading && (midiTracks.length > 0 || audioTracks.length > 0)) {
-      history.push("/proyecto");
-    }
-  }, [loading, audioTracks.length, midiTracks.length, history]);
+  useEffect( ()=>{ console.log(loading)}, [loading])
 
   return (
     <>
@@ -50,7 +46,13 @@ export default function Home() {
         setMidiTracks={setMidiTracks}
       />
 
-      {loading && <Loader />}
+      {loading ? (
+        <Loader />
+      ) : (
+        (midiTracks.length > 0 || audioTracks.length > 0) && (
+          <Proyecto midiTracks={midiTracks} audioTracks={audioTracks} />
+        )
+      )}
     </>
   );
 }
