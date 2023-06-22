@@ -3,11 +3,12 @@ import AudioTracks from "../components/AudioTracks";
 import MidiTracks from "../components/MidiTracks";
 
 const Proyecto = ({audioTracks, midiTracks}) => {
+  console.log(audioTracks.length > 0, midiTracks.length > 0);
   return (
     <div>
-      <AudioTracks audioTracks={audioTracks} />
+      {audioTracks.length > 0 && <AudioTracks audioTracks={audioTracks} /> }
 
-      <MidiTracks midiTracks={midiTracks} />
+      {midiTracks.length > 0 && <MidiTracks midiTracks={midiTracks} />}
     </div>
   );
 };
