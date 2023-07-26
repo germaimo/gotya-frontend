@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from "./pages/Home";
-import Proyecto from "./pages/Proyecto";
-import Perfil from "./pages/Perfil";
+import Home from "./routes/Home";
+import Proyecto from "./routes/Proyecto";
+import Perfil from "./routes/Perfil";
 //import Navbar from "./components/NavBar";
 //import Footer from "./components/Footer";
 

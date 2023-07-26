@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
+import {useDispatch} from "react-redux";
 
 const FileUploader = ({ handleSubmit }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedFileName, setSelectedFileName] = useState("");
+  const dispatch = useDispatch();
 
   const removeFile = () => {
     setSelectedFile("");
     setSelectedFileName("");
   };
+
+  const changeNombreProyecto = (e) =>{
+    dispatch({ type: "SET_NOMBRE_PROYECTO", payload: e });
+  }
 
   useEffect(() => {
     selectedFile?.name !== undefined && setSelectedFileName(selectedFile.name);
@@ -19,6 +25,10 @@ const FileUploader = ({ handleSubmit }) => {
         <div>
           <p>{selectedFileName}</p>
           <button onClick={removeFile}>Eliminar archivo seleccionado</button>
+          <br />
+          <br />
+          <input type="text" onChange={(e) => changeNombreProyecto(e.target.value)} placeholder="Nombre del proyecto"/>
+          <br />
           <br />
           <button
             onClick={() => {
