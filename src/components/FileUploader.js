@@ -27,7 +27,7 @@ const FileUploader = ({ handleSubmit }) => {
           <button onClick={removeFile}>Eliminar archivo seleccionado</button>
           <br />
           <br />
-          <input type="text" onChange={(e) => changeNombreProyecto(e.target.value)} placeholder="Nombre del proyecto"/>
+          <input type="text" onBlur={(e) => changeNombreProyecto(e.target.value)} placeholder="Nombre del proyecto"/>
           <br />
           <br />
           <button

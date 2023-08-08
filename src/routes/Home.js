@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import {useSelector, useDispatch} from "react-redux";
+import { useState } from "react";
+import { useDispatch} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import FileUploader from "../components/FileUploader";
 import Loader from "../components/Loader";
@@ -8,10 +8,6 @@ export default function Home() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const [redirect, setRedirect] = useState(false);
-
-  const audioTracks = useSelector(state => state.audioTracks);
-  const midiTracks = useSelector(state => state.midiTracks);
   
   const handleSubmit = async () => {
     setLoading(true);
@@ -40,27 +36,15 @@ export default function Home() {
       if(midiData.length > 0) {
         dispatch({ type: "SET_MIDI_TRACKS", payload: midiData });
       }
-      
-      let hayAudio = audioTracks.length > 0;
-      let hayMidi = midiTracks.length > 0;
 
-      if (hayAudio && hayMidi) {
-        setRedirect(true);
+      if(midiData.length > 0 && audioData.length > 0){
+        navigate("/Proyecto");
       }
-
+      
     } catch (error) {
       console.error(error);
     }
   };
-
-  useEffect(() => {
-    
-    if(redirect){
-      setRedirect(false);
-      navigate("/Proyecto");
-    }
-
-  }, [redirect, navigate]);
 
   return (
     <>

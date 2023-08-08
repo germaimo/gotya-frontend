@@ -1,4 +1,6 @@
 import * as typeActions from './tipoAcciones';
+import Storage from '../utils/storage'; // Asegúrate de que la ruta sea correcta según la ubicación de tu archivo storage.js
+
 
 const initialState = {
     nombreProyecto: 'Sin nombre',
@@ -7,26 +9,18 @@ const initialState = {
     loading: false,
     error: null
 }
-//aux 
-
-// aca llamaria al localStorage para traerme el comentario, entiendo que esta
-// funcion la podria hacer por fuera de este archivo
-//esta funcion no funciona, no se si esta bien tener esto en el reducer.
-//tendria que basarme en supercontenidos
-
 
 const reducer = (state = initialState, action) => {
 
-    //el trackName seria el key en el localStorage
-    // el value seria el comentario del canal
-
-    let getText = (trackName) => {
-        let texto = 'soy get text y el trackname seria:' + trackName ;
-        return texto;
-    }
+let getText = (trackName) => {
+    let textTrack = Storage.get(trackName);
+    return textTrack;
+}
 
 switch (action.type) {
     case typeActions.SET_NOMBRE_PROYECTO:
+        Storage.put(action.payload, {audioTracks: [], midiTracks:[]});
+
         return {
             ...state,
             nombreProyecto: action.payload
@@ -38,6 +32,7 @@ switch (action.type) {
             error: action.payload
         }
     case typeActions.SET_AUDIO_TRACKS:
+        console.log("set audio tracks", action.payload)
         
         let arrayAudioTracks = action.payload.map( (track) => ({ track: track, text: getText(track) }) );
         return {
@@ -45,6 +40,9 @@ switch (action.type) {
             audioTracks: arrayAudioTracks
         }
     case typeActions.SET_MIDI_TRACKS:
+        
+    console.log("set midi tracks", action.payload)
+
         let arrayMidiTracks = action.payload.map( (track) => ({ track: track, text: "hola midi" }) )
 
         return {
