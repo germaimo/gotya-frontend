@@ -10,7 +10,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-    
+
   let getText = (tipo, trackName) => {
     let proyecto = Storage.get(state.nombreProyecto);
     let tracks = proyecto[tipo + "Tracks"];
@@ -20,6 +20,7 @@ const reducer = (state = initialState, action) => {
   };
 
   switch (action.type) {
+        
     case typeActions.SET_NOMBRE_PROYECTO:
       if (Storage.get(action.payload) === null) {
         Storage.put(action.payload, { audioTracks: [], midiTracks: [] });
