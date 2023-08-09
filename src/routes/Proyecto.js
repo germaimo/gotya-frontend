@@ -1,20 +1,35 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import * as typeActions from '../store/tipoAcciones';
 
 const Proyecto = () => {
   const audioTracks = useSelector((state) => state.audioTracks);
   const midiTracks = useSelector((state) => state.midiTracks);
   const nombreProyecto = useSelector((state)=> state.nombreProyecto);
 
-  //podria hacer que cuando se monta el componente pushearle los comentarios 
+  const dispatch = useDispatch();
 
-  //podra hacer que cuando se monta el textarea que se mande el id? existe esto?
+  const guardarComentario = (tipo, trackName, e) => {
+    const text = e.target.value;
 
+    if(tipo === "audio"){
+      
+      dispatch({
+        type: typeActions.GUARDAR_COMENTARIO_AUDIO,
+        payload: { audioTrackName: trackName, audioText: text}
+      });
 
-  //la logica seria que cuando se hace un unBlur, se ejecuta el dispatch, y se guarda en el localstorage
-  //
+    }else{
 
+      dispatch({
+        type: typeActions.GUARDAR_COMENTARIO_MIDI ,
+        payload: { midiTrackName: trackName, midiText: text}
+      });
+
+    }
+
+  }
 
   return (
       <div>
@@ -34,6 +49,7 @@ const Proyecto = () => {
                     cols="50"
                     placeholder="Agregar texto aquí"
                     defaultValue={item.text}
+                    onBlur={(e) => guardarComentario("audio", item.track, e)}
                   />
                 </div>
               ))}
@@ -51,6 +67,7 @@ const Proyecto = () => {
                     cols="50"
                     placeholder="Agregar texto aquí"
                     defaultValue={item.text}
+                    onBlur={(e) => guardarComentario("midi", item.track, e)}
                   />
                 </div>
               ))}
