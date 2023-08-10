@@ -9,7 +9,7 @@ const initialState = {
   error: null,
 };
 
-const reducer = (state = initialState, action) => {
+const singleProyectReducer = (state = initialState, action) => {
 
   let getText = (tipo, trackName) => {
     let proyecto = Storage.get(state.nombreProyecto);
@@ -114,4 +114,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default singleProyectReducer;

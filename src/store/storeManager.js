@@ -1,13 +1,5 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { combineReducers } from "redux";
-import singleProyectReducer from "./singleProyectReducer";
-import proyectsReducer from "./proyectsReducer";
-
-const rootReducer = combineReducers({
-  singleProject: singleProyectReducer,
-  multipleProjects: proyectsReducer,
-});
-
+import { configureStore } from '@reduxjs/toolkit';
+import reducer from './singleProyectReducer';
 export default configureStore({
-  rootReducer,
+    reducer
 });

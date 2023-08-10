@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import FileUploader from "../components/FileUploader";
@@ -46,6 +46,48 @@ export default function Home() {
     }
   };
 
+  const showProjects = () => {
+    //get projects from localStorage
+    const projects = Object.keys(localStorage);
+    const items = { ...localStorage };
+    let conunt = 0;
+    Object.values(items).forEach(valor => {
+      console.log(JSON.parse(valor));
+      conunt++;
+      console.log(conunt);
+    });
+    // Object.entries(items).forEach(([propiedad, valor]) => {
+    //   console.log(`Propiedad: ${propiedad}, Valor: ${valor}`);
+    // });
+    
+    /*if(projects.length > 0) {
+      return (
+        <div>
+          <h2>Proyectos guardados</h2>
+          <ul>
+            {projects.map((project) => (
+              <li key={project}>
+                <button
+                  onClick={() => {
+                    dispatch({ type: "SET_NOMBRE_PROYECTO", payload: project });
+                    navigate("/Proyecto");
+                  }}
+                >
+                  {project}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    } */
+  }
+
+  useEffect(()=>
+  {
+    showProjects();
+  }, []);
+
   return (
     <>
       {loading ? (
@@ -55,6 +97,7 @@ export default function Home() {
           handleSubmit={handleSubmit}
         />
       )}
+      
     </>
   );
 }
