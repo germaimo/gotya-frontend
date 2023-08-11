@@ -12,10 +12,19 @@ const initialState = {
 const singleProyectReducer = (state = initialState, action) => {
 
   let getText = (tipo, trackName) => {
+
+    //validar si el proyecto existe en localStorage, sino devuelvo vacio
+    
+    if (Storage.get(state.nombreProyecto) === null) return "";
+
+    // sino devuelvo el texto correspndiente
     let proyecto = Storage.get(state.nombreProyecto);
     let tracks = proyecto[tipo + "Tracks"];
     let track = tracks.filter((track) => track.track === trackName)[0];
-
+    //validar si existe la propiedad "text" en track, sino devuelvo vacio
+    
+    if (track?.text === undefined) return "";
+    
     return track.text;
   };
 
