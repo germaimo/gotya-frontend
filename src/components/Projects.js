@@ -20,23 +20,27 @@ const Projects = () => {
   const verProyecto = (nombreProyecto) => {
     //setear data como en home y luego redirigir
     let proyecto = projects.find((track) => track.nombre === nombreProyecto);
-    
+
     dispatch({
       type: typeActions.SET_NOMBRE_PROYECTO,
       payload: nombreProyecto,
     });
 
-    const {audioTracks , midiTracks } = proyecto.data
-
-    //console.log("eeesa", audioTracks, midiTracks)
+    const { audioTracks, midiTracks } = proyecto.data;
 
     if (audioTracks.length > 0) {
-      dispatch({ type: "SET_AUDIO_TRACKS", payload: {storage:true, audioTracks: audioTracks} });
+      dispatch({
+        type: "SET_AUDIO_TRACKS",
+        payload: { storage: true, audioTracks: audioTracks },
+      });
     }
 
     //si hay midiData, guardo en el store
     if (midiTracks.length > 0) {
-      dispatch({ type: "SET_MIDI_TRACKS", payload: {storage: true, midiTracks: midiTracks} });
+      dispatch({
+        type: "SET_MIDI_TRACKS",
+        payload: { storage: true, midiTracks: midiTracks },
+      });
     }
 
     navigate("/Proyecto");

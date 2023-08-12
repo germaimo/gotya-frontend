@@ -60,7 +60,7 @@ const singleProyectReducer = (state = initialState, action) => {
       };
     case typeActions.SET_MIDI_TRACKS:
       let arrayMidiTracks = [];
-      
+
       if (action.payload.storage) {
         arrayMidiTracks = action.payload.midiTracks;
       } else {
@@ -76,8 +76,6 @@ const singleProyectReducer = (state = initialState, action) => {
       };
     case typeActions.GUARDAR_COMENTARIO_AUDIO:
       const { audioTrackName, audioText } = action.payload;
-
-      console.log(audioTrackName, audioText);
 
       let audioTracksCopy = state.audioTracks.map((track) => ({ ...track }));
 
@@ -101,7 +99,7 @@ const singleProyectReducer = (state = initialState, action) => {
         // Manejar el caso en que no se encuentra el track
         console.error(`No se encontró el track ${audioTrackName}`);
         return state; // Devolver el estado sin cambios
-      }
+      };
     case typeActions.GUARDAR_COMENTARIO_MIDI:
       const { midiTrackName, midiText } = action.payload;
 
@@ -127,7 +125,7 @@ const singleProyectReducer = (state = initialState, action) => {
         // Manejar el caso en que no se encuentra el track
         console.error(`No se encontró el track ${midiTrackName}`);
         return state; // Devolver el estado sin cambios
-      }
+      };
     default:
       return state;
   }
