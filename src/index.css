@@ -5,6 +5,11 @@ p {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
 }
+
+h1{
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
 /*fin reset*/
 
 body {
@@ -85,7 +90,7 @@ body {
   border-bottom: 4px solid #515151;
 }
 
-.flex span {
+.flex span, .nombreTrackAudio span, .nombreTrackMidi span {
   border-right: 2px solid #5151514d;
   padding: 7px;
 }
@@ -100,3 +105,45 @@ body {
   text-align: left;
   margin-left: 14px;
 }
+
+
+/*proyecto.js*/
+.nombre{
+  background: #AAAAAA;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  margin: 1em auto;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.nombre span{
+  padding-left: .5em;
+  padding-right: .5em;
+}
+
+.contenedorCanal{
+  background: #8F8F8F;
+    padding: 2em;
+}
+
+.contenedorCanal h2{
+  text-align: center;
+}
+
+.nombreTrackAudio{
+  background: #F6F464;
+}
+
+.nombreTrackMidi{
+  background: #FF8DA5;
+}
+
+.nombreTrackAudio, .nombreTrackMidi{
+  display: flex;
+  align-items: center;
+  border: 4px solid #515151;
+}
+
+
