@@ -28,7 +28,9 @@ const Proyecto = () => {
 
   return (
     <div>
-      <Link to={{ pathname: "/" }}>
+      
+      <nav>
+       <Link to={{ pathname: "/" }}>
         <svg
           width="60"
           height="60"
@@ -46,20 +48,19 @@ const Proyecto = () => {
             </clipPath>
           </defs>
         </svg>
-      </Link>
+        </Link>
+
+        <ul>
+          <li><p className="usuarioLoggeado">GF</p></li>
+        </ul>
+      </nav>
+
       <h1 className="nombre">
         <img src="../ableton-icon.png" alt="ableton icon" />
         <span> {nombreProyecto}.als </span>
       </h1>
 
-      <div
-        style={{
-          display: "flex",
-          width: "fit-content",
-          margin: "0 auto",
-          gap: "20px",
-        }}
-      >
+      <div className="contenedorCanales">
         <div className="contenedorCanal">
           <h2>Audio Tracks</h2>
           {audioTracks.length > 0 &&
@@ -89,14 +90,18 @@ const Proyecto = () => {
                   </span>
                   <p>{item.track}</p>
                 </div>
-                <textarea
-                  id={`audio-${index}`}
-                  rows="4"
-                  cols="50"
-                  placeholder="Agregar texto aquí"
-                  defaultValue={item.text}
-                  onBlur={(e) => guardarComentario("audio", item.track, e)}
-                />
+                <div class="containerTextarea">
+                  <textarea
+                    id={`audio-${index}`}
+                    rows="4"
+                    cols="50"
+                    placeholder="Agregar texto aquí"
+                    defaultValue={item.text}
+                    onBlur={(e) => guardarComentario("audio", item.track, e)}
+                  />
+                  <div class="circuloUsuario">GF</div>
+                </div>
+
               </div>
             ))}
         </div>
