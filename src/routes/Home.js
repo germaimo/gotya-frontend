@@ -49,6 +49,7 @@ export default function Home() {
 
   return (
     <>
+      <p className="usuarioLoggeadox">GF</p>
       {loading ? <Loader /> : 
       <>
       <FileUploader handleSubmit={handleSubmit} />

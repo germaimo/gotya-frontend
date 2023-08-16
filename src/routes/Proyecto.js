@@ -50,6 +50,9 @@ const Proyecto = () => {
         </svg>
         </Link>
 
+        <p className="avisoGuardado">Los cambios se guardan automaticamente</p>
+        <p className="avisoGuardando">Guardando...</p>
+
         <ul>
           <li><p className="usuarioLoggeado">GF</p></li>
         </ul>
