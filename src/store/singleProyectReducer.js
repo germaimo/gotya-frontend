@@ -48,7 +48,7 @@ const singleProyectReducer = (state = initialState, action) => {
       if (action.payload.storage) {
         arrayAudioTracks = action.payload.audioTracks;
       } else {
-        arrayAudioTracks = action.payload.map((track) => ({
+        arrayAudioTracks = action.payload.audioData.map((track) => ({
           track: track,
           text: getText("audio", track),
         }));
@@ -64,7 +64,7 @@ const singleProyectReducer = (state = initialState, action) => {
       if (action.payload.storage) {
         arrayMidiTracks = action.payload.midiTracks;
       } else {
-        arrayMidiTracks = action.payload.map((track) => ({
+        arrayMidiTracks = action.payload.midiData.map((track) => ({
           track: track,
           text: getText("midi", track),
         }));

@@ -69,24 +69,21 @@ const Proyecto = () => {
                 <div className="nombreTrackAudio">
                   <span>
                     <svg
-                      width="34"
-                      height="34"
-                      viewBox="0 0 34 34"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g clipPath="url(#clip0_35_363)">
-                        <path
-                          d="M11.3334 7.08333V26.9167L26.9167 17L11.3334 7.08333Z"
-                          fill="black"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_35_363">
-                          <rect width="34" height="34" fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
+      xmlns="http://www.w3.org/2000/svg"
+      width="34"
+      height="34"
+      fillRule="evenodd"
+      strokeLinejoin="round"
+      strokeMiterlimit="2"
+      clipRule="evenodd"
+      viewBox="0 0 64 64"
+    >
+      <path fill="none" d="M-1024-192H256v800h-1280z"></path>
+      <path
+        fillRule="nonzero"
+        d="M8.002 43.851h47.822v5.992H8.002zM8.212 28.93h47.822v5.991H8.212zM8.212 14.008h47.822V20H8.212z"
+      ></path>
+    </svg>
                   </span>
                   <p>{item.track}</p>
                 </div>
