@@ -14,8 +14,7 @@ const Proyecto = () => {
 
   const [showTextareaAudio, setShowTextareaAudio] = useState(true);
   const [showSimulacraAudio, setShowSimulacraAudio] = useState(false);
- 
-  
+
   const dispatch = useDispatch();
 
   const guardarComentario = (tipo, trackName, e) => {
@@ -87,11 +86,9 @@ const Proyecto = () => {
         <ul>
           {usuarios.map((usuario, index) => (
             <li key={index}>
-              {" "}
               <p className={`usuarioLoggeado small color-${index} `}>
-                {" "}
-                {usuario}{" "}
-              </p>{" "}
+                {usuario}
+              </p>
             </li>
           ))}
           <li>
@@ -133,40 +130,48 @@ const Proyecto = () => {
                   <p>{item.track}</p>
                 </div>
                 <div className="containerTextarea">
-                {(index === 1 && showTextareaAudio) && <textarea
+                  {index === 1 && showTextareaAudio && (
+                    <textarea
                       id={`midi-${index}`}
                       rows="4"
                       cols="50"
                       placeholder="Agregar texto aquí"
                       defaultValue={item.text}
                       onBlur={(e) => guardarComentario("audio", item.track, e)}
-                    /> }
+                    />
+                  )}
 
-{(index === 1 && showSimulacraAudio) && <TypeAnimation
+                  {index === 1 && showSimulacraAudio && (
+                    <TypeAnimation
                       sequence={[
                         // Same substring at the start will only be typed out once, initially
-                        "Este canal esta bueno, podris",
+                        "Me re va esta textura,",
                         1000, // wait 1s before replacing "Mice" with "Hamsters"
-                        "Este canal esta bueno, podrias reemplaz",
+                        "Me re va esta textura, proabte un",
                         1000,
-                        "Este canal esta bueno, podrias fusionarlo con el canal de abajo",
+                        "Me re va esta textura, fijate de darle mas billo",
+                        500,
+                        "Me re va esta textura, fijate de darle mas brillo con un eq o un drive",
                         1000,
                       ]}
                       wrapper="textarea"
-                      style={{height: "4.5em", width: "98%"}}
+                      style={{ height: "4.5em", width: "98%" }}
                       speed={25}
                       repeat={0}
-                    /> }
+                    />
+                  )}
 
-                  {index !== 1 && <textarea
-                    id={`audio-${index}`}
-                    rows="4"
-                    cols="50"
-                    placeholder="Agregar texto aquí"
-                    defaultValue={item.text}
-                    onBlur={(e) => guardarComentario("audio", item.track, e)}
-                  />}
-                  
+                  {index !== 1 && (
+                    <textarea
+                      id={`audio-${index}`}
+                      rows="4"
+                      cols="50"
+                      placeholder="Agregar texto aquí"
+                      defaultValue={item.text}
+                      onBlur={(e) => guardarComentario("audio", item.track, e)}
+                    />
+                  )}
+
                   {index === 1 && (
                     <div className="circuloUsuarioLR hidden-item2">LR</div>
                   )}
@@ -206,18 +211,19 @@ const Proyecto = () => {
                   <p>{item.track}</p>
                 </div>
                 <div className="containerTextarea">
-
-                  {(index === 0 && showTextarea) && <textarea
+                  {index === 0 && showTextarea && (
+                    <textarea
                       id={`midi-${index}`}
                       rows="4"
                       cols="50"
                       placeholder="Agregar texto aquí"
                       defaultValue={item.text}
                       onBlur={(e) => guardarComentario("midi", item.track, e)}
-                    /> }
+                    />
+                  )}
 
-
-                  {(index === 0 && showSimulacra) && <TypeAnimation
+                  {index === 0 && showSimulacra && (
+                    <TypeAnimation
                       sequence={[
                         // Same substring at the start will only be typed out once, initially
                         "Este canal esta bueno, podris",
@@ -228,19 +234,22 @@ const Proyecto = () => {
                         1000,
                       ]}
                       wrapper="textarea"
-                      style={{height: "4.5em", width: "98%"}}
+                      style={{ height: "4.5em", width: "98%" }}
                       speed={25}
                       repeat={0}
-                    /> }
+                    />
+                  )}
 
-                    {index !== 0 && <textarea
+                  {index !== 0 && (
+                    <textarea
                       id={`midi-${index}`}
                       rows="4"
                       cols="50"
                       placeholder="Agregar texto aquí"
                       defaultValue={item.text}
                       onBlur={(e) => guardarComentario("midi", item.track, e)}
-                    /> }
+                    />
+                  )}
 
                   {index === 0 && (
                     <div className="circuloUsuarioTM hidden-item1">TM</div>
