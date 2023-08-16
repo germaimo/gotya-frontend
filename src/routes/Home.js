@@ -6,6 +6,7 @@ import Loader from "../components/Loader";
 import Projects from "../components/Projects";
 import * as typeActions from '../store/tipoAcciones';
 
+
 export default function Home() {
   const navigate = useNavigate();
   const dispatch = useDispatch();

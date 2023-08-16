@@ -3,6 +3,7 @@ import Storage from "../utils/storage";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import * as typeActions from "../store/tipoAcciones";
+import { Toaster, toast } from 'sonner';
 
 const Projects = () => {
   const navigate = useNavigate();
@@ -51,14 +52,16 @@ const Projects = () => {
   }
 
   return (
+    <>
     <div className="proyectsContainer">
       {projects.map((project) => (
         <div
           className="card"
-          onClick={() => verProyecto(project.nombre)}
           key={project.nombre}
         >
-          <div className="nombreProyecto">{project.nombre}.als</div>
+          <div className="nombreProyecto" 
+          onClick={() => verProyecto(project.nombre)}
+          >{project.nombre}.als</div>
           <div className="opciones">
             <div className="flex">
               <span>
@@ -82,7 +85,9 @@ const Projects = () => {
                   </defs>
                 </svg>
               </span>
-              <p className="textoCompartir">Compartir</p>
+              <p className="textoCompartir"
+              onClick={() => toast.success('Link copiado al portapapeles')}
+              >Compartir</p>
             </div>
 
             <div
@@ -116,6 +121,8 @@ const Projects = () => {
         </div>
       ))}
     </div>
+    <Toaster />
+    </>
   );
 };
 

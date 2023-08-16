@@ -21,6 +21,13 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+.containerArchSelec{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    color: white;
+}
+
 .nuevoProyecto {
   font-family: Inter;
   font-size: 22px;
