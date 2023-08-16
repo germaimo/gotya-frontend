@@ -124,6 +124,27 @@ nav p{
   font-size: 24px;
 }
 
+ul{
+  display: flex;
+  align-items: center;
+}
+
+li{
+  padding-right: 1em;
+}
+
+.small{
+  font-size: 18px;
+}
+
+.color-0{
+  background: #e84646;
+}
+
+.color-1{
+  background: #4343fa;
+}
+
 .nombre{
   background: #AAAAAA;
   width: fit-content;
@@ -193,4 +214,58 @@ nav p{
 
 textarea:focus + .circuloUsuario {
   display: flex;
+}
+
+.circuloUsuarioLR{
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(40%);
+  width: 30px;
+  height: 30px;
+  background: #e84646;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 16px;
+}
+
+.circuloUsuarioTM{
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(40%);
+  width: 30px;
+  height: 30px;
+  background: #4343fa;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 16px;
+}
+
+
+.hidden-item1 {
+  opacity: 0; 
+  animation: fadeIn 1s forwards; 
+  animation-delay: 6s; 
+}
+
+.hidden-item2{
+  opacity: 0; 
+  animation: fadeIn 1s forwards; 
+  animation-delay: 7s; 
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Estado inicial */
+  }
+  to {
+    opacity: 1; /* Estado final */
+  }
 }
