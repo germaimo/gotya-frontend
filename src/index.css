@@ -197,6 +197,7 @@ li{
 
 .circuloUsuario {
   position: absolute;
+  z-index: 10;
   right: -10px;
   top: 50%;
   transform: translateY(40%);
