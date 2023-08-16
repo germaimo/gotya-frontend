@@ -83,6 +83,9 @@ const Proyecto = () => {
           </svg>
         </Link>
 
+        <p className="avisoGuardado">Los cambios se guardan automaticamente</p>
+        <p className="avisoGuardando">Guardando...</p>
+
         <ul>
           {usuarios.map((usuario, index) => (
             <li key={index}>
